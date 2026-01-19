@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Landing Page</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
+}
+
+html{ scroll-behavior:smooth; }
+
+/* HEADER */
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 30px;
+  background:#0a0a23;
+  color:white;
+  position:sticky;
+  top:0;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:20px;
+}
+
+/* HERO */
+.hero{
+  height:90vh;
+  background:url("https://images.unsplash.com/photo-1498050108023-c5249f4df085")
+  no-repeat center/cover;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color:white;
+  padding:20px;
+}
+
+.hero h1{
+  font-size:40px;
+  animation:fadeDown 1s ease;
+}
+
+.hero p{
+  margin:15px 0;
+  animation:fadeUp 1.2s ease;
+}
+
+.hero button{
+  padding:12px 30px;
+  border:none;
+  background:#0066ff;
+  color:white;
+  border-radius:5px;
+  cursor:pointer;
+}
+
+/* FEATURES */
+.features{
+  padding:70px 20px;
+  background:#f5f7fb;
+  text-align:center;
+}
+
+.features h2{
+  font-size:32px;
+  margin-bottom:10px;
+}
+
+.features small{
+  color:#0066ff;
+}
+
+.feature-container{
+  margin-top:40px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:25px;
+  max-width:1100px;
+  margin:auto;
+}
+
+.feature{
+  background:white;
+  padding:25px;
+  border-radius:12px;
+  transition:0.4s;
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+.feature:hover{
+  transform:translateY(-10px);
+  box-shadow:0 15px 35px rgba(0,102,255,0.25);
+}
+
+.feature span{
+  font-size:35px;
+}
+
+.feature h3{
+  margin:10px 0;
+  color:#0a0a23;
+}
+
+.feature p{
+  font-size:14px;
+  color:#555;
+}
+
+/* CONTACT */
+.contact{
+  padding:70px 20px;
+  text-align:center;
+}
+
+.contact h2{
+  margin-bottom:20px;
+}
+
+form{
+  max-width:420px;
+  margin:auto;
+}
+
+input, textarea{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border:1px solid #ccc;
+  border-radius:5px;
+}
+
+button.submit-btn{
+  width:100%;
+  padding:12px;
+  background:#0066ff;
+  color:white;
+  border:none;
+  border-radius:5px;
+  cursor:pointer;
+}
+
+.success{
+  color:green;
+  margin-top:15px;
+  display:none;
+}
+
+/* FOOTER */
+footer{
+  background:#0a0a23;
+  color:white;
+  text-align:center;
+  padding:15px;
+}
+
+/* ANIMATION */
+@keyframes fadeDown{
+  from{opacity:0; transform:translateY(-30px);}
+  to{opacity:1; transform:translateY(0);}
+}
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(30px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero h1{ font-size:30px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h2>MyWebsite</h2>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#features">Features</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <h1>Modern Web Experience</h1>
+  <p>Clean • Interactive • Scalable</p>
+  <button onclick="document.getElementById('features').scrollIntoView()">Explore</button>
+</section>
+
+<section class="features" id="features">
+  <h2>Unique Features</h2>
+  <small>Designed differently</small>
+
+  <div class="feature-container">
+
+    <div class="feature">
+      <span>🧭</span>
+      <h3>Smart Scroll</h3>
+      <p>Built-in smooth navigation for better user flow.</p>
+    </div>
+
+    <div class="feature">
+      <span>🧩</span>
+      <h3>Modular UI</h3>
+      <p>Each section is independent and easy to extend.</p>
+    </div>
+
+    <div class="feature">
+      <span>📴</span>
+      <h3>Offline Ready Design</h3>
+      <p>Structure supports offline-first enhancements.</p>
+    </div>
+
+    <div class="feature">
+      <span>🛡️</span>
+      <h3>Form Validation Ready</h3>
+      <p>Prepared for backend validation and security.</p>
+    </div>
+
+    <div class="feature">
+      <span>⚙️</span>
+      <h3>Performance Layout</h3>
+      <p>Minimal DOM structure for faster rendering.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <h2>Contact Us</h2>
+
+  <form onsubmit="submitForm(event)">
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <textarea rows="4" placeholder="Your Message" required></textarea>
+    <button class="submit-btn">Send Message</button>
+    <p class="success" id="successMsg">Message sent successfully!</p>
+  </form>
+</section>
+
+<footer>
+  <p>© 2026 MyWebsite. All Rights Reserved.</p>
+</footer>
+
+<script>
+function submitForm(e){
+  e.preventDefault();   // stops reload
+  document.getElementById("successMsg").style.display="block";
+  e.target.reset();
+}
+</script>
+
+</body>
+</html>
+Mainflow Tasks 1 codee
